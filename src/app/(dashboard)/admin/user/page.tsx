@@ -1,7 +1,7 @@
 export default function UserManagementPage() {
   return (
     <div>
-      <h1>Kontol</h1>
+      <h1>Pasti Mamah Kamu bangga</h1>
     </div>
   );
 }
