@@ -29,7 +29,6 @@ export default function DataTable({
                   {column}
                 </TableHead>
               ))}
-              ;
             </TableRow>
           </TableHeader>
           <TableBody>
