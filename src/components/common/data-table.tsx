@@ -52,7 +52,7 @@ export default function DataTable({
                 </TableCell>
               </TableRow>
             )}
-            {!isLoading && (
+            {isLoading && (
               <TableRow>
                 <TableCell colSpan={header.length} className="h-24 text-center">
                   Loading...
