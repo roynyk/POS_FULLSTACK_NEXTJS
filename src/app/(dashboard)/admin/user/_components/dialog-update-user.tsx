@@ -1,8 +1,11 @@
 import {
+  INITIAL_CREATE_USER_FORM,
   INITIAL_STATE_CREATE_USER,
   INITIAL_STATE_UPDATE_USER,
 } from "@/constants/auth-constant";
 import {
+  CreateUserForm,
+  createUserSchema,
   UpdateUserForm,
   updateUserSchema,
 } from "@/validations/auth-validation";
@@ -14,8 +17,7 @@ import { toast } from "sonner";
 import { Preview } from "@/types/general";
 import FormUser from "./form-user";
 import { Profile } from "@/types/auth";
-import { Key } from "lucide-react";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog } from "@radix-ui/react-dialog";
 
 export default function DialogUpdateUser({
   refetch,
@@ -26,18 +28,18 @@ export default function DialogUpdateUser({
   refetch: () => void;
   currentData?: Profile;
   open?: boolean;
-  handleChangeAction: (open: boolean) => void;
+  handleChangeAction?: (open: boolean) => void;
 }) {
   const form = useForm<UpdateUserForm>({
     resolver: zodResolver(updateUserSchema),
   });
 
-  const [preview, setPreview] = useState<Preview | undefined>(undefined);
-
   const [updateUserState, updateUserAction, isPendingUpdateUser] =
     useActionState(updateUser, INITIAL_STATE_UPDATE_USER);
 
-  const onSubmit = form.handleSubmit(async (data) => {
+  const [preview, setPreview] = useState<Preview | undefined>(undefined);
+
+  const onSubmit = form.handleSubmit((data) => {
     const formData = new FormData();
     if (currentData?.avatar_url !== data.avatar_url) {
       Object.entries(data).forEach(([key, value]) => {

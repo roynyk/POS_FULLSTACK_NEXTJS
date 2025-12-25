@@ -20,12 +20,12 @@ export default function DialogCreateUser({ refetch }: { refetch: () => void }) {
     defaultValues: INITIAL_CREATE_USER_FORM,
   });
 
-  const [preview, setPreview] = useState<Preview | undefined>(undefined);
-
   const [createUserState, createUserAction, isPendingCreateUser] =
     useActionState(createUser, INITIAL_STATE_CREATE_USER);
 
-  const onSubmit = form.handleSubmit(async (data) => {
+  const [preview, setPreview] = useState<Preview | undefined>(undefined);
+
+  const onSubmit = form.handleSubmit((data) => {
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
       formData.append(key, key === "avatar_url" ? preview!.file ?? "" : value);
@@ -51,6 +51,7 @@ export default function DialogCreateUser({ refetch }: { refetch: () => void }) {
       refetch();
     }
   }, [createUserState]);
+
   return (
     <FormUser
       form={form}

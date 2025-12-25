@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import DialogCreateUser from "./dialog-create-user";
 import { Profile } from "@/types/auth";
 import DialogUpdateUser from "./dialog-update-user";
+import DialogDeleteUser from "./dialog-delete-use";
 
 export default function UserManagement() {
   const supabase = createClient();
@@ -38,7 +39,7 @@ export default function UserManagement() {
         .select("*", { count: "exact" })
         .range((currentPage - 1) * currentLimit, currentPage * currentLimit - 1)
         .order("created_at")
-        .ilike("name", `%${currentSearch}`);
+        .ilike("name", `%${currentSearch}%`);
 
       if (result.error)
         toast.error("Get User data failed", {
@@ -61,7 +62,7 @@ export default function UserManagement() {
   const filteredData = useMemo(() => {
     return (users?.data || []).map((user, index) => {
       return [
-        index + 1,
+        currentLimit * (currentPage - 1) + index + 1,
         user.id,
         user.name,
         user.role,
@@ -89,7 +90,12 @@ export default function UserManagement() {
                 </span>
               ),
               variant: "destructive",
-              action: () => {},
+              action: () => {
+                setSelectedAction({
+                  data: user,
+                  type: "delete",
+                });
+              },
             },
           ]}
         />,
@@ -106,7 +112,7 @@ export default function UserManagement() {
   return (
     <div className="w-full">
       <div className="flex flex-col lg:flex-row mb-4 gap-2 justify-between w-full">
-        <h1 className="text-2xl font-bold">Pasti Mamah Kamu bangga</h1>
+        <h1 className="text-2xl font-bold">User Management</h1>
         <div className="flex gap-2">
           <Input
             placeholder="Search by name"
@@ -135,7 +141,13 @@ export default function UserManagement() {
         refetch={refetch}
         currentData={selectedAction?.data}
         handleChangeAction={handleChangeAction}
-      ></DialogUpdateUser>
+      />
+      <DialogDeleteUser
+        open={selectedAction !== null && selectedAction.type === "delete"}
+        refetch={refetch}
+        currentData={selectedAction?.data}
+        handleChangeAction={handleChangeAction}
+      />
     </div>
   );
 }
