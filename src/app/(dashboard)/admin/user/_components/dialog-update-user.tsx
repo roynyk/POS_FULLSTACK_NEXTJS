@@ -20,10 +20,12 @@ import { Dialog } from "@/components/ui/dialog";
 export default function DialogUpdateUser({
   refetch,
   currentData,
+  open,
   handleChangeAction,
 }: {
   refetch: () => void;
   currentData?: Profile;
+  open?: boolean;
   handleChangeAction: (open: boolean) => void;
 }) {
   const form = useForm<UpdateUserForm>({
