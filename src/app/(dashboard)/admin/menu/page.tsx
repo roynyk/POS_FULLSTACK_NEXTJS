@@ -4,6 +4,6 @@ export const metadata = {
   title: "ROY Cafe | Menu Management",
 };
 
-export default function UserManagementPage() {
+export default function MenuManagementPage() {
   return <MenuManagement />;
 }
