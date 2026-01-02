@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import useDataTable from "@/hooks/use-data-table";
 import { createClient } from "@/lib/supabase/client";
 import { useQuery } from "@tanstack/react-query";
-import { Ban, Link2Icon, Pencil, ScrollText, Trash2 } from "lucide-react";
+import { Ban, Link2Icon, ScrollText } from "lucide-react";
 import {
   startTransition,
   useActionState,
@@ -19,11 +19,7 @@ import {
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Table } from "@/validations/table-validation";
-import { HEADER_TABLE_TABLE } from "@/constants/table-constant";
-import {
-  HEADER_TABLE_ORDER,
-  INITIAL_STATE_ORDER,
-} from "@/constants/order-constant";
+import { HEADER_TABLE_ORDER } from "@/constants/order-constant";
 import DialogCreateOrder from "./dialog-create-order";
 import { updateReservation } from "../actions";
 import { INITIAL_STATE_ACTION } from "@/constants/general-constant";
