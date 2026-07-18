@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RoyCafe - Real-Time Point of Sale (POS) Application
 
-## Getting Started
+RoyCafe is a modern, real-time Point of Sale (POS) system designed for food and beverage businesses. It enables staff to manage dining tables, process customer orders instantly, verify payments securely, and provides store administrators with comprehensive real-time transaction reports.
 
-First, run the development server:
+## 🚀 Tech Stack
+- **Frontend & Routing:** Next.js (App Router), TypeScript, Tailwind CSS, lucide-react.
+- **State Management:** Zustand (for lightweight, reactive local app state).
+- **Backend-as-a-Service:** Supabase (Auth, Real-time Channels, Storage).
+- **Database & Querying:** PostgreSQL (hosted on Supabase).
+- **Payment Gateway:** Midtrans Sandbox Integration (for checkout simulation and secure payment callbacks).
 
+---
+
+## ✨ Key Features
+- **Dynamic Table Management:** Assign and monitor table statuses (empty, occupied, ordering) in real-time.
+- **Interactive Ordering Flow:** Browse menu categories, customize order items, and send orders directly to the kitchen dashboard.
+- **Real-Time Order Updates:** Instantly updates statuses across staff and kitchen terminals using Supabase Realtime subscription channels.
+- **Payment Integration:** Secure online checkout flow using Midtrans Sandbox. Validates transaction success automatically.
+- **Sales & Transaction Reporting:** Comprehensive dashboard representing daily earnings, order histories, and best-selling menu items.
+
+---
+
+## 🛠️ Local Installation & Development Setup
+
+### Prerequisites
+- Node.js installed (v18 or higher recommended).
+- A [Supabase](https://supabase.com/) project set up (with PostgreSQL tables for Menu, Orders, Tables, and Transactions).
+- A [Midtrans](https://midtrans.com/) Sandbox Account (for Client Key and Server Key credentials).
+
+### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/roynyk/roycafe.git
+cd roycafe
